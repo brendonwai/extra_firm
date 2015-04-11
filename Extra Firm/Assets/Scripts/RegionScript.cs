@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class RegionScript : MonoBehaviour {
 
@@ -20,6 +21,12 @@ public class RegionScript : MonoBehaviour {
 	//percentage counted towards the whole human body
 	public int weight;
 
+	//Object reference to the virus object
+	public GameObject Virus;
+
+	//List to store virus objects
+	private List<GameObject> VirusList;
+
 	SpriteRenderer sprite;
 
 	public Sprite normal;
@@ -30,16 +37,12 @@ public class RegionScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		VirusList=new List<GameObject>();
 		owner=0;
 		population=0;
 		sprite=GetComponent<SpriteRenderer>();
 	}
 
-	//Sets owner of region
-	//See owner variable above for number representations
-	void SetOwner(int new_owner){
-		owner=new_owner;
-	}
 
 	//Gets owner of region
 	//See owner variable above for number representations
@@ -47,28 +50,52 @@ public class RegionScript : MonoBehaviour {
 		return owner;
 	}
 
-	//Sets population of region
-	void SetPopulation(int new_population){
-		population=new_population;
-	}
 
 	//Gets population of region
 	int GetPopulation(){
 		return population;
 	}
 
+	// Set owner and population
+	// Destroys and Instantiates virus object according to 
+	// owner and population status
+	void Populate(int new_owner, int amount){
+		if(population>0){
+			ClearVirus();
+		}
+		owner=new_owner;
+		population=amount;
+	}
+
+	//Destroys virus objects and cleans up VirusList
+	private void ClearVirus(){
+		if(VirusList.Count>0){
+			for(int i=0;i<VirusList.Count;i++){
+				Destroy(VirusList[i]);
+			}
+			VirusList.Clear();
+		}
+	}
+
+	//Instantiates Virus objects in VirusList
+	private void GenerateVirus(){
+		for(int i=0;i<population;i++){
+			VirusList.Add((GameObject)Instantiate(Virus,transform.position,Quaternion.identity));
+		}
+	}
+
 	//change sprite when mouse hovers over region
-	void OnMouseEnter(){
+	private void OnMouseEnter(){
 		sprite.sprite=highlighted;
 	}
 
 	//change sprite when mouse leaves region
-	void OnMouseExit(){
+	private void OnMouseExit(){
 		sprite.sprite=normal;
 	}
 
 	//Mouse click action
-	void OnMouseDown(){
+	private void OnMouseDown(){
 		//change sprite
 		sprite.sprite=pressed;
 		Debug.Log("clicked");
@@ -77,7 +104,7 @@ public class RegionScript : MonoBehaviour {
 
 	}
 
-	void OnMouseUp(){
+	private void OnMouseUp(){
 		sprite.sprite=highlighted;
 	}
 
