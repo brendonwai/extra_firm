@@ -1,12 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scenes\RandomEffects.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\RegionScript.cs">
     <Files>
-      <File FileName="Assets\Scenes\RandomEffects.cs" Line="24" Column="13" />
+      <File FileName="Assets\EndTurnButton.cs" Line="13" Column="3" />
       <File FileName="Assets\Scripts\Manger.cs" Line="1" Column="1" />
-      <File FileName="Assets\Player2.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player1.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\RegionScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\RegionScript.cs" Line="92" Column="8" />
       <File FileName="Assets\Scripts\Virus.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
