@@ -1,10 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Player2.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Manger.cs">
     <Files>
-      <File FileName="Assets\Player2.cs" Line="9" Column="15" />
+      <File FileName="Assets\Scripts\Manger.cs" Line="21" Column="28" />
+      <File FileName="Assets\Player2.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Player1.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Manger.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\RegionScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Virus.cs" Line="1" Column="1" />
     </Files>
