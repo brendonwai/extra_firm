@@ -13,10 +13,10 @@ public class RegionScript : MonoBehaviour {
 
 	//player occupying the region
 	//0 for neutral,  1~4 to specify player number
-	private int owner;
+	public int owner;
 
 	//amount of virus currently in the region
-	private int population;
+	public int population;
 
 	//percentage counted towards the whole human body
 	public int weight;
@@ -44,18 +44,6 @@ public class RegionScript : MonoBehaviour {
 	}
 
 
-	//Gets owner of region
-	//See owner variable above for number representations
-	int GetOwner(){
-		return owner;
-	}
-
-
-	//Gets population of region
-	int GetPopulation(){
-		return population;
-	}
-
 	// Set owner and population
 	// Destroys and Instantiates virus object according to 
 	// owner and population status
@@ -81,7 +69,7 @@ public class RegionScript : MonoBehaviour {
 	//Instantiates Virus objects in VirusList
 	private void GenerateVirus(){
 		for(int i=0;i<population;i++){
-			Vector2 pos=new Vector2(transform.position.x+Random.Range(-2.0f,2.0f),transform.position.y+Random.Range(-2.0f,2.0f));
+			Vector2 pos=new Vector2(transform.position.x+Random.Range(-.4f,.4f),transform.position.y+Random.Range(-.4f,.4f));
 			VirusList.Add((GameObject)Instantiate(virus,pos,Quaternion.identity));
 			VirusList[i].SendMessage("SetOwner",owner);
 		}
@@ -106,7 +94,7 @@ public class RegionScript : MonoBehaviour {
 		//Do something else with mouse click
 
 		//testing mouse click instantiation
-		Populate(1,4);
+		Populate(1,5);
 
 
 	}
