@@ -1,8 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Virus.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Manger.cs">
     <Files>
-      <File FileName="Assets\Virus.cs" Line="17" Column="3" />
+      <File FileName="Assets\Scripts\Manger.cs" Line="21" Column="28" />
+      <File FileName="Assets\Player2.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Player1.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\RegionScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Virus.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
