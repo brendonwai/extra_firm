@@ -5,6 +5,8 @@ public class Manger : MonoBehaviour {
 	public bool player1;
 	public bool player2;
 	public float elappsedTime;
+	public bool player1Wins;
+	public bool player2Wins;
 
 	void Awake() {
 		DontDestroyOnLoad(transform.gameObject);
@@ -24,6 +26,7 @@ public class Manger : MonoBehaviour {
 			player1 = !player1;
 			player2 = !player2;
 			}
+
 		elappsedTime = Time.time;
 	}
 }
