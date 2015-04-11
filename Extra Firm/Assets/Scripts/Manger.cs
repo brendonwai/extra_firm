@@ -5,6 +5,12 @@ public class Manger : MonoBehaviour {
 	public bool player1;
 	public bool player2;
 	public float elappsedTime;
+
+	void Awake() {
+		DontDestroyOnLoad(transform.gameObject);
+	}
+
+
 	// Use this for initialization
 	void Start () {
 		player1 = true;
