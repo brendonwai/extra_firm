@@ -4,34 +4,35 @@ using UnityEngine.UI;
 
 public class Virus : MonoBehaviour {
 
-	public float speed = 1.5f;
-	private Vector3 target;
-	public bool rest;
-	public int vNum;
-	public Text tVNum;
-	
-	void Start () {
-		target = transform.position;
-		vNum = 10;
-		tVNum.text = "Virus Count: " + vNum.ToString ();
-	}
-	
-	void Update () {
-		if (Input.GetKeyDown ("space")) {
-			rest = true;
-		}
-		if (rest == true)
-		{
-			vNum += 5;
-			tVNum.text = "Virus Count: " + vNum.ToString ();
-			rest = false;
-			
-		}
-		if (Input.GetMouseButtonDown(0)) {
-			transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
-		
-		}
+	public int owner;
+	Color P1Color= new Color(255/255.0f,116/255.0f,116/255.0f);
+	Color P2Color= new Color(88/255.0f,176/255.0f,249/255.0f);
 
-	}    
+
+
+	void Start () {
+
+	}
+
+	
+	void SetOwner(int new_owner){
+		owner=new_owner;
+		SetColor();
+	}
+
+	private void SetColor(){
+		switch(owner){
+			case 1:
+				GetComponent<SpriteRenderer>().color=P1Color;
+				break;
+			case 2:
+				GetComponent<SpriteRenderer>().color=P2Color;
+				break;
+			default:
+				GetComponent<SpriteRenderer>().color=Color.white;
+				break;
+		}
+	}
+ 
 }
 

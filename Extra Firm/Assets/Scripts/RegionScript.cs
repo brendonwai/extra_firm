@@ -22,7 +22,7 @@ public class RegionScript : MonoBehaviour {
 	public int weight;
 
 	//Object reference to the virus object
-	public GameObject Virus;
+	public GameObject virus;
 
 	//List to store virus objects
 	private List<GameObject> VirusList;
@@ -65,6 +65,7 @@ public class RegionScript : MonoBehaviour {
 		}
 		owner=new_owner;
 		population=amount;
+		GenerateVirus();
 	}
 
 	//Destroys virus objects and cleans up VirusList
@@ -80,7 +81,9 @@ public class RegionScript : MonoBehaviour {
 	//Instantiates Virus objects in VirusList
 	private void GenerateVirus(){
 		for(int i=0;i<population;i++){
-			VirusList.Add((GameObject)Instantiate(Virus,transform.position,Quaternion.identity));
+			Vector2 pos=new Vector2(transform.position.x+Random.Range(-2.0f,2.0f),transform.position.y+Random.Range(-2.0f,2.0f));
+			VirusList.Add((GameObject)Instantiate(virus,pos,Quaternion.identity));
+			VirusList[i].SendMessage("SetOwner",owner);
 		}
 	}
 
@@ -101,6 +104,10 @@ public class RegionScript : MonoBehaviour {
 		Debug.Log("clicked");
 
 		//Do something else with mouse click
+
+		//testing mouse click instantiation
+		Populate(1,4);
+
 
 	}
 
