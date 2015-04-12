@@ -29,6 +29,7 @@ public class Player : MonoBehaviour {
 
 	void updateRegionOwned(){
 		RegionsOwned.Clear();
+		TotalVirus=0;
 		foreach (GameObject region in manger.CompleteRegionList){
 			RegionScript reg=region.GetComponent<RegionScript>();
 			if (reg.owner==playerNumber && !RegionsOwned.Contains(region)){
