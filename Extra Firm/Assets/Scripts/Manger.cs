@@ -42,13 +42,14 @@ public class Manger : MonoBehaviour {
 	}
 
 	void NextTurn(){
-
+		player1.SendMessage("updateRegionOwned");
+		player2.SendMessage("updateRegionOwned");
 		foreach (GameObject region in CompleteRegionList) {
-			if (player1.GetComponent<Player>().RegionCount == 10)
+			if (player1.GetComponent<Player>().RegionCount == 9)
 			{
 				Application.LoadLevel("player 1 wins");
 			}
-			if (player2.GetComponent<Player>().RegionCount == 10)
+			if (player2.GetComponent<Player>().RegionCount == 9)
 			{
 				Application.LoadLevel("2Wins");
 			}
