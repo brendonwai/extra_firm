@@ -30,15 +30,18 @@ public class Fighting : MonoBehaviour {
 			Dice.GetComponent<DiceScript>() .roller();
 			rollCR = Dice.GetComponent<DiceScript> ().roll + CV;
 			result =rollAR - rollCR;
+			Debug.Log("D1 roll= "+rollAR.ToString()+"\nD2 roll= "+rollCR.ToString());
 		}
 		creg.Populate(creg.owner,1);
-		if(result==0)
+		if(result==0){
 			areg.Populate(0,0);
-		else if(result>0)
+		}else if(result>0){
 			areg.Populate(creg.owner,result);
-		else{
+			Debug.Log(creg.owner.ToString()+" wins! "+"result is "+result.ToString());
+		}else if(result<0){
 			result=Mathf.Abs(result);
 			areg.Populate(areg.owner,result);
+			Debug.Log(areg.owner.ToString()+" wins! "+"result is "+result.ToString());
 		}
 		
 	}

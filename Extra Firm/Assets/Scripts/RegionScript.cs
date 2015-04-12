@@ -64,6 +64,7 @@ public class RegionScript : MonoBehaviour {
 	// Destroys and Instantiates virus object according to 
 	// owner and population status
 	public void Populate(int new_owner, int amount){
+		Debug.Log(regionName+"'s new owner is "+new_owner+"\n amount is "+amount);
 		if(population>0){
 			ClearVirus();
 		}
@@ -141,6 +142,7 @@ public class RegionScript : MonoBehaviour {
 					ActionedRegion=region;
 			}
 			GameObject.Find("CombatManager").GetComponent<Fighting>().Fight(ClickedRegion,ActionedRegion);
+			Debug.Log("after fight");
 			manager.SendMessage("NextTurn");
 		}
 

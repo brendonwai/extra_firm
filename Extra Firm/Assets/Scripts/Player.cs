@@ -20,6 +20,10 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+	}
+
+	void updateRegionOwned(){
 		RegionsOwned.Clear();
 		foreach (GameObject region in manger.CompleteRegionList){
 			RegionScript reg=region.GetComponent<RegionScript>();
@@ -32,19 +36,24 @@ public class Player : MonoBehaviour {
 	}
 
 	void PlayerAction(){
+		updateRegionOwned();
 		int count =0;
-		int pop = Random.Range (1, 3);
+		int pop = Random.Range (0, 3);
 		foreach (GameObject region in RegionsOwned){
 			region.GetComponent<RegionScript>().Enabled=true;
-			if (count > 0 && region.GetComponent<RegionScript>().population !=10 )
-			{
-				region.GetComponent<RegionScript>().Populate(playerNumber,region.GetComponent<RegionScript>().population + pop);
-				if(region.GetComponent<RegionScript>().population >10)
-				{
-					region.GetComponent<RegionScript>().Populate(playerNumber,10);
-				}
+			
+			if (count > 0 )
+			{	
+				
+				RegionScript reg=region.GetComponent<RegionScript>();
+				int new_pop=pop+reg.population;
+				if(new_pop>10)
+					new_pop=10;
+				reg.Populate(playerNumber,new_pop);
+
 			}
 			count+=1;
+			
 		}
 	}
 
@@ -53,11 +62,13 @@ public class Player : MonoBehaviour {
 			RegionScript reg=region.GetComponent<RegionScript>();
 			reg.Enabled=false;
 		}
+		updateRegionOwned();
 	}
 
 	void PlayerEndActionable(){
 		foreach (GameObject region in manger.CompleteRegionList){
 			region.GetComponent<RegionScript>().Actionable=false;
 		}
+		updateRegionOwned();
 	}
 }
