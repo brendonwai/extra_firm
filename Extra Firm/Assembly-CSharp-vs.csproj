@@ -50,9 +50,11 @@
      <Compile Include="Assets\Scripts\BodyPart.cs" />
      <Compile Include="Assets\Scripts\DiceScript.cs" />
      <Compile Include="Assets\Scripts\EndTurnButton.cs" />
+     <Compile Include="Assets\Scripts\Fighting.cs" />
      <Compile Include="Assets\Scripts\Manger.cs" />
      <Compile Include="Assets\Scripts\Player.cs" />
      <Compile Include="Assets\Scripts\RegionScript.cs" />
+     <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\UIManagerScript.cs" />
      <Compile Include="Assets\Scripts\Virus.cs" />
      <Compile Include="Assets\Scripts\numText.cs" />

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 public class RegionScript : MonoBehaviour {
 
-	public GameObject Player1;
-	public GameObject Player2;
-	public GameObject manager;
+	GameObject Player1;
+	GameObject Player2;
+	GameObject manager;
 
 	//name of the region
 	public string regionName;
@@ -17,10 +17,10 @@ public class RegionScript : MonoBehaviour {
 
 	//player occupying the region
 	//0 for neutral,  1~4 to specify player number
-	public int owner;
+	public int owner=0;
 
 	//amount of virus currently in the region
-	public int population;
+	public int population=0;
 
 	//percentage counted towards the whole human body
 	public int weight;
@@ -47,13 +47,16 @@ public class RegionScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		VirusList=new List<GameObject>();
-		owner=0;
-		population=0;
 		sprite=GetComponent<SpriteRenderer>();
+		Player1=GameObject.Find("Player1");
+		Player2=GameObject.Find("Player2");
+		manager=GameObject.Find("Manager");
 		Enabled=false;
 		Clicked=false;
 		Actionable=false;
 		Actioned=false;
+		if(owner!=0 && population!=0)
+			Populate(owner,population);
 	}
 
 
@@ -116,8 +119,9 @@ public class RegionScript : MonoBehaviour {
 			}
 			else if(Actionable){
 				Actioned=true;
-				if(manager.GetComponent<Manger>().player1Turn)
+				if(manager.GetComponent<Manger>().player1Turn){
 					Player1.SendMessage("PlayerEndActionable");
+				}
 				else
 					Player2.SendMessage("PlayerEndActionable");
 			}
@@ -131,7 +135,8 @@ public class RegionScript : MonoBehaviour {
 	}
 
 	private void OnMouseUp(){
-		sprite.sprite=highlighted;
+		if(Enabled || Actionable)
+			sprite.sprite=highlighted;
 	}
 
 	

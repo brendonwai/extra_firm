@@ -22,11 +22,10 @@ public class Player : MonoBehaviour {
 	void Update () {
 		foreach (GameObject region in manger.CompleteRegionList){
 			RegionScript reg=region.GetComponent<RegionScript>();
-			if (reg.owner==playerNumber){
+			if (reg.owner==playerNumber && !RegionsOwned.Contains(region)){
 				RegionsOwned.Add(region);
 				TotalVirus+=reg.population;
 			}
-
 		}
 		RegionCount=RegionsOwned.Count;
 	}
@@ -45,9 +44,8 @@ public class Player : MonoBehaviour {
 	}
 
 	void PlayerEndActionable(){
-		foreach (GameObject region in RegionsOwned){
-			RegionScript reg=region.GetComponent<RegionScript>();
-			reg.Actionable=false;
+		foreach (GameObject region in manger.CompleteRegionList){
+			region.GetComponent<RegionScript>().Actionable=false;
 		}
 	}
 }

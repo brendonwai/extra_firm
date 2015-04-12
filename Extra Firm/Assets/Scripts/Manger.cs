@@ -18,11 +18,17 @@ public class Manger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		player1=GameObject.Find("Player1");
+		player2=GameObject.Find("Player2");
 		turnText = turnText.GetComponent<Text> ();
 		player1Turn = true;
 		CompleteRegionList=GameObject.FindGameObjectsWithTag("region");
 	}
 	
+	void startGame(){
+		player1.SendMessage("PlayerAction");
+	}
+
 	// Update is called once per frame
 	void Update () {
 	
