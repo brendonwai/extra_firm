@@ -54,6 +54,7 @@
      <Compile Include="Assets\Scripts\Player1.cs" />
      <Compile Include="Assets\Scripts\Player2.cs" />
      <Compile Include="Assets\Scripts\RegionScript.cs" />
+     <Compile Include="Assets\Scripts\Timer.cs" />
      <Compile Include="Assets\Scripts\UIManagerScript.cs" />
      <Compile Include="Assets\Scripts\Virus.cs" />
      <Compile Include="Assets\Scripts\numText.cs" />

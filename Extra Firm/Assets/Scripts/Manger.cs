@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
@@ -16,7 +16,7 @@ public class Manger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		turnText = GetComponent<Text>();
+		turnText = turnText.GetComponent<Text> ();
 		player1Turn = true;
 		player2Turn = false;
 	}
