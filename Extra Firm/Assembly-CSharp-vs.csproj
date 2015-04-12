@@ -46,6 +46,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\EndTurnButton.cs" />
      <Compile Include="Assets\Script\RandomEffects.cs" />
      <Compile Include="Assets\Scripts\BodyPart.cs" />
      <Compile Include="Assets\Scripts\Manger.cs" />

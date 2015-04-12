@@ -18,11 +18,21 @@ public class BodyPart : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		bool BonusEnabled=true;
+		int lastOwner=0;
 		int OccupyCount=0;
 		for(int i=0;i<RegionList.Length;i++){
 			RegionScript rs= RegionList[i].GetComponent<RegionScript>();
-			if(rs.owner!=0)
+			if(rs.owner==0)
+				BonusEnabled=false;
+			else{
+				if(i==0){
+					lastOwner=rs.owner;
+				}else if (lastOwner!=rs.owner){
+					BonusEnabled=false;
+				}
 				OccupyCount++;
+			}	
 			health=3-OccupyCount;
 		}
 		switch(health){
@@ -36,6 +46,12 @@ public class BodyPart : MonoBehaviour {
 			default:
 				GetComponent<SpriteRenderer>().color=Color.red;
 				break;
+		}
+		if(BonusEnabled){
+			for(int i=0;i<RegionList.Length;i++){
+				RegionList[i].GetComponent<SpriteRenderer>().color=Color.yellow;
+			}
+			//Enable bonus here
 		}
 	}
 }
