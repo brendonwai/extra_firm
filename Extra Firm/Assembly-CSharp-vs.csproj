@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\BodyPart.cs" />
      <Compile Include="Assets\Scripts\DiceScript.cs" />
      <Compile Include="Assets\Scripts\EndTurnButton.cs" />
+     <Compile Include="Assets\Scripts\Fighting.cs" />
      <Compile Include="Assets\Scripts\Manger.cs" />
      <Compile Include="Assets\Scripts\Player1.cs" />
      <Compile Include="Assets\Scripts\Player2.cs" />
