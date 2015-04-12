@@ -10,12 +10,12 @@ public class Player : MonoBehaviour {
 	public List<GameObject> RegionsOwned;
 	public int RegionCount=0;
 	public int TotalVirus=0;
-<<<<<<< HEAD
+
 	public int max =6;
-=======
+
 	public Text RegionText;
 	public Text VirusText;
->>>>>>> origin/master
+
 	Manger manger;
 
 	// Use this for initialization
