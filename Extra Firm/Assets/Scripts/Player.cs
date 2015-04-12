@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,18 +10,21 @@ public class Player : MonoBehaviour {
 	public List<GameObject> RegionsOwned;
 	public int RegionCount=0;
 	public int TotalVirus=0;
+	public Text RegionText;
+	public Text VirusText;
 	Manger manger;
 
 	// Use this for initialization
 	void Start () {
 		manger=Manager.GetComponent<Manger>();
-
-		
+		RegionText = RegionText.GetComponent<Text> ();
+		VirusText = VirusText.GetComponent<Text> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
+		RegionText.text = "Regions: " + RegionCount.ToString ();
+		VirusText.text = "Viruses: " + TotalVirus.ToString ();
 	}
 
 	void updateRegionOwned(){
