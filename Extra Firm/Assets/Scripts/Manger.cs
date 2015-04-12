@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class Manger : MonoBehaviour {
-	public bool player1;
-	public bool player2;
+	public bool player1Turn;
+	public bool player2Turn;
 	public float elappsedTime;
 	public bool player1Wins;
 	public bool player2Wins;
@@ -15,16 +15,16 @@ public class Manger : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player1 = true;
-		player2 = false;
+		player1Turn = true;
+		player2Turn = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
 		if (Input.GetKeyDown (KeyCode.T)) {
-			player1 = !player1;
-			player2 = !player2;
+			player1Turn = !player1Turn;
+			player2Turn = !player2Turn;
 			}
 
 		elappsedTime = Time.time;
