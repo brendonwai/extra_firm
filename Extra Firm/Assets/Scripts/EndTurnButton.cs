@@ -3,10 +3,12 @@ using System.Collections;
 
 
 public class EndTurnButton : MonoBehaviour {
-	public GameObject Manger;
+	public GameObject Manager;
 	bool p1Turn;
 	bool p2Turn;
 	private void OnMouseDown(){
+		Manager.GetComponent<Manger>().SendMessage("EndTurn");
+
 		//change sprite
 		Debug.Log ("#BEARJAM");
 	}
@@ -17,7 +19,6 @@ public class EndTurnButton : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		p1Turn = gameObject.GetComponent<Manger> ().player1Turn;
-		p2Turn = gameObject.GetComponent<Manger> ().player2Turn;
+		
 	}
 }

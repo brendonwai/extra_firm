@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 public class RegionScript : MonoBehaviour {
 
+	public GameObject Player1;
+	public GameObject Player2;
+	public GameObject manager;
+
 	//name of the region
 	public string regionName;
 
@@ -27,6 +31,11 @@ public class RegionScript : MonoBehaviour {
 	//List to store virus objects
 	private List<GameObject> VirusList;
 
+	public bool Enabled;
+	public bool Clicked;
+	public bool Actionable;
+	public bool Actioned;
+
 	SpriteRenderer sprite;
 
 	public Sprite normal;
@@ -41,6 +50,10 @@ public class RegionScript : MonoBehaviour {
 		owner=0;
 		population=0;
 		sprite=GetComponent<SpriteRenderer>();
+		Enabled=false;
+		Clicked=false;
+		Actionable=false;
+		Actioned=false;
 	}
 
 
@@ -77,7 +90,8 @@ public class RegionScript : MonoBehaviour {
 
 	//change sprite when mouse hovers over region
 	private void OnMouseEnter(){
-		sprite.sprite=highlighted;
+		if(Enabled || Actionable)
+			sprite.sprite=highlighted;
 	}
 
 	//change sprite when mouse leaves region
@@ -87,14 +101,31 @@ public class RegionScript : MonoBehaviour {
 
 	//Mouse click action
 	private void OnMouseDown(){
-		//change sprite
-		sprite.sprite=pressed;
-		Debug.Log("clicked");
+		if(Enabled || Actionable){
+			//change sprite
+			sprite.sprite=pressed;
+			Debug.Log("clicked");
+			if(Enabled){
+				foreach(GameObject LinkedRegion in LinkedRegions){
+					LinkedRegion.GetComponent<RegionScript>().Actionable=true;
+				}
+				if(manager.GetComponent<Manger>().player1Turn)
+					Player1.SendMessage("PlayerEndEnable");
+				else
+					Player2.SendMessage("PlayerEndEnable");
+			}
+			else if(Actionable){
+				Actioned=true;
+				if(manager.GetComponent<Manger>().player1Turn)
+					Player1.SendMessage("PlayerEndActionable");
+				else
+					Player2.SendMessage("PlayerEndActionable");
+			}
+		}
 
 		//Do something else with mouse click
 
 		//testing mouse click instantiation
-		Populate(1,5);
 
 
 	}

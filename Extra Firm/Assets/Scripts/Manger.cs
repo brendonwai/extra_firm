@@ -3,8 +3,10 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class Manger : MonoBehaviour {
+	public GameObject player1;
+	public GameObject player2;
+	public GameObject[] CompleteRegionList;
 	public bool player1Turn;
-	public bool player2Turn;
 	public float elappsedTime;
 	public bool player1Wins;
 	public bool player2Wins;
@@ -18,22 +20,28 @@ public class Manger : MonoBehaviour {
 	void Start () {
 		turnText = GetComponent<Text>();
 		player1Turn = true;
-		player2Turn = false;
+		CompleteRegionList=GameObject.FindGameObjectsWithTag("region");
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
-		if (Input.GetKeyDown (KeyCode.T)) {
-			player1Turn = !player1Turn;
-			player2Turn = !player2Turn;
-			}
 
 		if (player1Turn)
 			turnText.text = "Player 1's Turn";
-		else if (player2Turn)
+		else 
 			turnText.text = "Player 2's Turn";
 
 		elappsedTime = Time.time;
 	}
+
+	void NextTurn(){
+		player1Turn=!player1Turn;
+		if (player1Turn)
+			player1.SendMessage("PlayerAction");
+		else
+			player2.SendMessage("PlayerAction");
+	}
+
+
 }
