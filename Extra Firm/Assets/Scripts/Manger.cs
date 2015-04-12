@@ -11,7 +11,7 @@ public class Manger : MonoBehaviour {
 	public bool player1Wins;
 	public bool player2Wins;
 	public Text turnText;
-
+	
 	void Awake() {
 		DontDestroyOnLoad(transform.gameObject);
 	}
@@ -42,6 +42,18 @@ public class Manger : MonoBehaviour {
 	}
 
 	void NextTurn(){
+
+		foreach (GameObject region in CompleteRegionList) {
+			if (player1.GetComponent<Player>().RegionCount == 10)
+			{
+				Application.LoadLevel("player 1 wins");
+			}
+			if (player2.GetComponent<Player>().RegionCount == 10)
+			{
+				Application.LoadLevel("2Wins");
+			}
+		}
+
 		foreach(GameObject region in CompleteRegionList){
 			region.GetComponent<RegionScript>().Clicked=false;
 			region.GetComponent<RegionScript>().Actioned=false;

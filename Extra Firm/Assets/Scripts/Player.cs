@@ -36,9 +36,13 @@ public class Player : MonoBehaviour {
 		int pop = Random.Range (1, 3);
 		foreach (GameObject region in RegionsOwned){
 			region.GetComponent<RegionScript>().Enabled=true;
-			if (count > 0)
+			if (count > 0 && region.GetComponent<RegionScript>().population !=10 )
 			{
 				region.GetComponent<RegionScript>().Populate(playerNumber,region.GetComponent<RegionScript>().population + pop);
+				if(region.GetComponent<RegionScript>().population >10)
+				{
+					region.GetComponent<RegionScript>().Populate(playerNumber,10);
+				}
 			}
 			count+=1;
 		}
