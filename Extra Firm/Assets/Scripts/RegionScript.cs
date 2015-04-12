@@ -109,6 +109,7 @@ public class RegionScript : MonoBehaviour {
 			sprite.sprite=pressed;
 			Debug.Log("clicked");
 			if(Enabled){
+				Clicked=true;
 				foreach(GameObject LinkedRegion in LinkedRegions){
 					LinkedRegion.GetComponent<RegionScript>().Actionable=true;
 				}
@@ -124,15 +125,24 @@ public class RegionScript : MonoBehaviour {
 				}
 				else
 					Player2.SendMessage("PlayerEndActionable");
+				callCombat();
 			}
 		}
 
-		//Do something else with mouse click
-
-		//testing mouse click instantiation
-
-
 	}
+
+	private void callCombat(){
+			GameObject ClickedRegion=null;
+			GameObject ActionedRegion=null;
+			foreach(GameObject region in manager.GetComponent<Manger>().CompleteRegionList){
+				if (region.GetComponent<RegionScript>().Clicked)
+					ClickedRegion=region;
+				if (region.GetComponent<RegionScript>().Actioned)
+					ActionedRegion=region;
+			}
+			GameObject.Find("CombatManager").GetComponent<Fighting>().Fight(ClickedRegion,ActionedRegion);
+			manager.SendMessage("NextTurn");
+		}
 
 	private void OnMouseUp(){
 		if(Enabled || Actionable)

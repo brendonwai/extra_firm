@@ -42,6 +42,10 @@ public class Manger : MonoBehaviour {
 	}
 
 	void NextTurn(){
+		foreach(GameObject region in CompleteRegionList){
+			region.GetComponent<RegionScript>().Clicked=false;
+			region.GetComponent<RegionScript>().Actioned=false;
+		}
 		player1Turn=!player1Turn;
 		if (player1Turn)
 			player1.SendMessage("PlayerAction");
