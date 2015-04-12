@@ -53,5 +53,11 @@ public class BodyPart : MonoBehaviour {
 			}
 			//Enable bonus here
 		}
+		else{
+
+			foreach(GameObject region in RegionList){
+				region.GetComponent<SpriteRenderer>().color=Color.white;
+			}
+		}
 	}
 }

@@ -20,6 +20,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		RegionsOwned.Clear();
 		foreach (GameObject region in manger.CompleteRegionList){
 			RegionScript reg=region.GetComponent<RegionScript>();
 			if (reg.owner==playerNumber && !RegionsOwned.Contains(region)){
