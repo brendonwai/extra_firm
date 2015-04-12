@@ -18,15 +18,10 @@ public class DiceScript : MonoBehaviour {
 		sprite = GetComponent<SpriteRenderer> ();
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		 
-		if (Input.GetKeyDown (KeyCode.R)) {
+	public int roller()
+	{
+		roll =  Random.Range (1, 7);
 
-			roll = Random.Range(1,7);
-
-		}
 		if (roll == 1) {
 			sprite.sprite=One;
 		}
@@ -45,6 +40,18 @@ public class DiceScript : MonoBehaviour {
 		if (roll == 6) {
 			sprite.sprite=Six;
 		}
+
+		return roll;
+	}
+	// Update is called once per frame
+	void Update () {
+		 
+		if (Input.GetKeyDown (KeyCode.R)) {
+
+			roller ();
+
+		}
+
 
 	}
 }
