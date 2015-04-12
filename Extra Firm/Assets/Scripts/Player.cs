@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -9,14 +10,19 @@ public class Player : MonoBehaviour {
 	public List<GameObject> RegionsOwned;
 	public int RegionCount=0;
 	public int TotalVirus=0;
+<<<<<<< HEAD
 	public int max =6;
+=======
+	public Text RegionText;
+	public Text VirusText;
+>>>>>>> origin/master
 	Manger manger;
 
 	// Use this for initialization
 	void Start () {
 		manger=Manager.GetComponent<Manger>();
-
-		
+		RegionText = RegionText.GetComponent<Text> ();
+		VirusText = VirusText.GetComponent<Text> ();
 	}
 	void increaseMaxRoll(){
 	                     
@@ -28,11 +34,13 @@ public class Player : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update () {
-
+		RegionText.text = "Regions: " + RegionCount.ToString ();
+		VirusText.text = "Viruses: " + TotalVirus.ToString ();
 	}
 
 	void updateRegionOwned(){
 		RegionsOwned.Clear();
+		TotalVirus=0;
 		foreach (GameObject region in manger.CompleteRegionList){
 			RegionScript reg=region.GetComponent<RegionScript>();
 			if (reg.owner==playerNumber && !RegionsOwned.Contains(region)){

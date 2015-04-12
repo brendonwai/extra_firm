@@ -70,6 +70,17 @@ public class RegionScript : MonoBehaviour {
 		}
 		owner=new_owner;
 		population=amount;
+		switch(owner){
+			case 0:
+				sprite.color=Color.white;
+				break;
+			case 1:
+				sprite.color=new Color(255/255.0f,116/255.0f,116/255.0f);
+				break;
+			case 2:
+				sprite.color=new Color(88/255.0f,176/255.0f,249/255.0f);
+				break;
+		}
 		GenerateVirus();
 	}
 
