@@ -55,6 +55,7 @@
      <Compile Include="Assets\Scripts\RegionScript.cs" />
      <Compile Include="Assets\Scripts\UIManagerScript.cs" />
      <Compile Include="Assets\Scripts\Virus.cs" />
+     <Compile Include="Assets\Scripts\numText.cs" />
      <None Include="Assets\PixelUIpack\License.txt" />
      <None Include="Assets\PixelUIpack\Spritesheet\spritesheetInfo.txt" />
  <Reference Include="UnityEngine.UI">
