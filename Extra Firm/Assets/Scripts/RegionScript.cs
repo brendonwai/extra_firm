@@ -63,7 +63,7 @@ public class RegionScript : MonoBehaviour {
 	// Set owner and population
 	// Destroys and Instantiates virus object according to 
 	// owner and population status
-	void Populate(int new_owner, int amount){
+	public void Populate(int new_owner, int amount){
 		if(population>0){
 			ClearVirus();
 		}
