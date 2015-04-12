@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 	public List<GameObject> RegionsOwned;
 	public int RegionCount=0;
 	public int TotalVirus=0;
+	public int max =6;
 	Manger manger;
 
 	// Use this for initialization
@@ -17,7 +18,14 @@ public class Player : MonoBehaviour {
 
 		
 	}
-	
+	void increaseMaxRoll(){
+	                     
+		max += 1 ;
+	 }
+	void decreaseMaxRoll(){
+		
+		max -= 1 ;
+	}
 	// Update is called once per frame
 	void Update () {
 

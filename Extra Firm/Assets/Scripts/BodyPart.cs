@@ -6,13 +6,18 @@ public class BodyPart : MonoBehaviour {
 	//Health status for color display
 	//3 for most healthy, 1 for least
 	private int health;
+	public GameObject player1;
+	public GameObject player2;
 
 	//List of Regions contained in this body part
 	public GameObject[] RegionList;
+	public bool alreadyEnabled = false;
 
 
 	// Use this for initialization
 	void Start () {
+		player1 = GameObject.Find ("Player1");
+		player2 = GameObject.Find ("Player2");
 		health=3;
 	}
 	
@@ -47,12 +52,25 @@ public class BodyPart : MonoBehaviour {
 				GetComponent<SpriteRenderer>().color=Color.red;
 				break;
 		}
-		if(BonusEnabled){
-			for(int i=0;i<RegionList.Length;i++){
-				RegionList[i].GetComponent<SpriteRenderer>().color=Color.yellow;
+			if (BonusEnabled && alreadyEnabled == false && RegionList.Length>1) {
+				alreadyEnabled = true;
+				Debug.Log ("Increase");
+				if (RegionList [0].GetComponent<RegionScript> ().owner == 1) {
+					player1.SendMessage ("increaseMaxRoll");
+				}
+				if (RegionList [0].GetComponent<RegionScript> ().owner == 2) {
+					player2.SendMessage ("increaseMaxRoll");
+				}
+			} else if (!BonusEnabled && alreadyEnabled == true) {
+				alreadyEnabled = false;
+				Debug.Log ("Decrease");
+				if (RegionList [0].GetComponent<RegionScript> ().owner == 1) {
+					player1.SendMessage ("decreaseMaxRoll");
+				}
+				if (RegionList [0].GetComponent<RegionScript> ().owner == 2) {
+					player2.SendMessage ("decreaseMaxRoll");
+				}
 			}
-			//Enable bonus here
-		}
 		else{
 
 			foreach(GameObject region in RegionList){
