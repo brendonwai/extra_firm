@@ -37,7 +37,7 @@ public class BodyPart : MonoBehaviour {
 		}
 		switch(health){
 			case 3:
-				GetComponent<SpriteRenderer>().color=Color.green;
+				GetComponent<SpriteRenderer>().color=Color.white;
 				break;
 			case 2:
 				GetComponent<SpriteRenderer>().color=Color.yellow;
