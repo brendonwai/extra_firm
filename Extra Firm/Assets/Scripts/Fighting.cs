@@ -6,6 +6,7 @@ public class Fighting : MonoBehaviour {
 	public int rollAR = 0;
 	public int rollCR = 0;
 	public int result = 0;
+	public AudioClip move;
 	// Use this for initialization
 	void Start () {
 
@@ -17,10 +18,13 @@ public class Fighting : MonoBehaviour {
 		RegionScript areg=ActionedRegion.GetComponent<RegionScript>();
 		int AV=creg.population-1;
 		int CV=areg.population;
-		if (areg.owner==0)
-			result=AV;
+		if (areg.owner == 0) {
+			result = AV;
+			AudioSource.PlayClipAtPoint(move,transform.position);
+		}
 		else if(areg.owner==creg.owner){
 			result=AV+CV;
+			AudioSource.PlayClipAtPoint(move,transform.position);
 			if(result>10)
 				result=10;
 		}
@@ -29,6 +33,7 @@ public class Fighting : MonoBehaviour {
 			rollAR = Dice.GetComponent<DiceScript> ().roll + AV;
 			Dice.GetComponent<DiceScript>() .roller();
 			rollCR = Dice.GetComponent<DiceScript> ().roll + CV;
+			AudioSource.PlayClipAtPoint(move,transform.position);
 			result =rollAR - rollCR;
 			Debug.Log("D1 roll= "+rollAR.ToString()+"\nD2 roll= "+rollCR.ToString());
 		}

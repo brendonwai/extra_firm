@@ -11,6 +11,8 @@ public class RegionScript : MonoBehaviour {
 	//name of the region
 	public string regionName;
 
+	public AudioClip select;
+
 	//array of regions linked to this region
 	//add in regions through inspector
 	public GameObject[] LinkedRegions;
@@ -119,6 +121,7 @@ public class RegionScript : MonoBehaviour {
 		if(Enabled || Actionable){
 			//change sprite
 			sprite.sprite=pressed;
+			AudioSource.PlayClipAtPoint(select,transform.position);
 			Debug.Log("clicked");
 			if(Enabled){
 				Clicked=true;
