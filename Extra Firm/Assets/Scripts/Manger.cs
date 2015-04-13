@@ -10,7 +10,6 @@ public class Manger : MonoBehaviour {
 	public float elappsedTime;
 	public bool player1Wins;
 	public bool player2Wins;
-	public Text turnText;
 	
 	void Awake() {
 		DontDestroyOnLoad(transform.gameObject);
@@ -20,23 +19,17 @@ public class Manger : MonoBehaviour {
 	void Start () {
 		player1=GameObject.Find("Player1");
 		player2=GameObject.Find("Player2");
-		turnText = turnText.GetComponent<Text> ();
 		player1Turn = true;
 		CompleteRegionList=GameObject.FindGameObjectsWithTag("region");
 	}
 	
 	void startGame(){
+		GameObject.Find("playButton").SetActive(false);
 		player1.SendMessage("PlayerAction");
 	}
 
 	// Update is called once per frame
 	void Update () {
-	
-
-		if (player1Turn)
-			turnText.text = "Player 1's Turn";
-		else 
-			turnText.text = "Player 2's Turn";
 
 		elappsedTime = Time.time;
 	}
